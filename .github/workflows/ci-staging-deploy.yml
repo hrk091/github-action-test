@@ -47,6 +47,6 @@ jobs:
     steps:
       - name: upload to lambda
         run: |
-          echo ${pwd}
+          echo $(pwd)
           ls -la
           aws lambda update-function-code --function-name ${AWS_LAMBDA_NAME} --zip-file fileb://build/function.zip
