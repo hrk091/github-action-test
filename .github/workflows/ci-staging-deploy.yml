@@ -26,6 +26,7 @@ jobs:
 
           PACK_DIR=$(pwd)/package
           BUILD_DIR=$(pwd)/build
+          mkdir -p ${BUILD_DIR}
 
           python -m pip install --upgrade pip
           pip install --target ${PACK_DIR} -r ${PIP_REQUIREMENTS}
