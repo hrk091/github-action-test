@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_LAMBDA_NAME: test-lamdba-deploy
+  AWS_LAMBDA_NAME: test-lambda-deploy
   PIP_REQUIREMENTS: requirements.txt
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
 
-      - name: install python packages
+      - name: Install python packages
         run: |
           set -o errexit
           set -o nounset
@@ -52,6 +52,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: function-zip
-      - name: upload to lambda
+      - name: Upload to lambda
         run: |
           aws lambda update-function-code --function-name ${AWS_LAMBDA_NAME} --zip-file fileb://function.zip
