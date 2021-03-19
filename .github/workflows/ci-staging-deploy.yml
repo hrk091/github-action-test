@@ -8,7 +8,6 @@ on:
   workflow_dispatch:
 
 env:
-  PACKAGE_NAME: unaas_log
   AWS_LAMBDA_NAME: test-lamdba-deploy
   PIP_REQUIREMENTS: requirements.txt
 
@@ -30,7 +29,8 @@ jobs:
 
           python -m pip install --upgrade pip
           pip install --target ${PACK_DIR} -r ${PIP_REQUIREMENTS}
-          cp -r lambda ${PACKAGE_NAME} ${PACK_DIR}
+          # cp -r lambda ${PACKAGE_NAME} ${PACK_DIR}
+          cp -r lambda_function.py ${PACK_DIR}
           (cd ${PACK_DIR} && zip -r9 ${BUILD_DIR}/function.zip)
   upload:
     runs-on: ubuntu-latest
